@@ -13,7 +13,7 @@ export default function Footer() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-8 xl:gap-16">
 
                     {/* Address & Directions */}
-                    <div className="flex flex-col gap-6 order-1">
+                    <div className="flex flex-col gap-6 order-1 lg:order-none">
                         <div className="flex items-start gap-4">
                             <MapPin className="shrink-0 mt-1" size={20} />
                             <div>
@@ -36,10 +36,10 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    {/* Phone & Socials (Order swapped on mobile) */}
-                    <div className="flex flex-col gap-12 order-3 sm:order-2">
+                    {/* Phone & Socials */}
+                    <div className="contents lg:flex lg:flex-col lg:gap-12">
                         {/* Phone Block */}
-                        <div className="flex flex-col gap-6">
+                        <div className="flex flex-col gap-6 order-2 lg:order-none">
                             <div className="flex items-start gap-4">
                                 <Phone className="shrink-0 mt-1" size={20} />
                                 <div>
@@ -60,7 +60,7 @@ export default function Footer() {
                         </div>
 
                         {/* Socials Block */}
-                        <div className="flex items-start gap-4">
+                        <div className="flex items-start gap-4 order-4 lg:order-none">
                             <div className="w-[20px] shrink-0"></div>
                             <div>
                                 <h4 className="text-[11px] font-black uppercase mb-2 tracking-widest text-brand-text/50">Socials</h4>
@@ -76,8 +76,8 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    {/* Hours (Moved up on mobile) */}
-                    <div className="flex items-start gap-4 order-2 sm:order-3">
+                    {/* Hours */}
+                    <div className="flex items-start gap-4 order-3 lg:order-none">
                         <Clock className="shrink-0 mt-1" size={20} />
                         <div className="w-full">
                             <h4 className="text-[11px] font-black uppercase mb-2 tracking-widest text-brand-text/50">Hours</h4>
