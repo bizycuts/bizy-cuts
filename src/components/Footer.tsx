@@ -10,10 +10,11 @@ export default function Footer() {
                     BIZY CUTS
                 </h2>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-8 xl:gap-16">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-8 xl:gap-16">
 
-                    {/* Address & Directions */}
-                    <div className="flex flex-col gap-6 order-1 lg:order-none">
+                    {/* Column 1: Address & Phone */}
+                    <div className="flex flex-col gap-12 order-1">
+                        {/* Address */}
                         <div className="flex items-start gap-4">
                             <MapPin className="shrink-0 mt-1" size={20} />
                             <div>
@@ -31,42 +32,21 @@ export default function Footer() {
                                 </a>
                             </div>
                         </div>
-                    </div>
 
-                    {/* Phone & Socials */}
-                    <div className="contents lg:flex lg:flex-col lg:gap-12">
-                        {/* Phone Block */}
-                        <div className="flex flex-col gap-6 order-2 lg:order-none">
-                            <div className="flex items-start gap-4">
-                                <Phone className="shrink-0 mt-1" size={20} />
-                                <div>
-                                    <h4 className="text-[11px] font-black uppercase mb-2 tracking-widest text-brand-text/50">Phone</h4>
-                                    <a href="tel:6304356080" className="flex items-center gap-2 text-[15px] md:text-lg font-medium leading-relaxed hover:text-brand-red transition-colors underline underline-offset-4 decoration-brand-text/20 hover:decoration-brand-red">
-                                        (630) 435-6080 <ArrowUpRight size={14} className="opacity-50" />
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Socials Block */}
-                        <div className="flex items-start gap-4 order-4 lg:order-none">
-                            <div className="w-[20px] shrink-0"></div>
+                        {/* Phone */}
+                        <div className="flex items-start gap-4">
+                            <Phone className="shrink-0 mt-1" size={20} />
                             <div>
-                                <h4 className="text-[11px] font-black uppercase mb-2 tracking-widest text-brand-text/50">Socials</h4>
-                                <div className="flex flex-col gap-3 text-[15px] md:text-lg font-medium leading-relaxed">
-                                    <a href="https://www.instagram.com/bizy_cuts/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-brand-red transition-colors underline underline-offset-4 decoration-brand-text/20 hover:decoration-brand-red">
-                                        Instagram <ArrowUpRight size={14} className="opacity-50" />
-                                    </a>
-                                    <a href="https://www.facebook.com/BizyCuts" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-brand-red transition-colors underline underline-offset-4 decoration-brand-text/20 hover:decoration-brand-red">
-                                        Facebook <ArrowUpRight size={14} className="opacity-50" />
-                                    </a>
-                                </div>
+                                <h4 className="text-[11px] font-black uppercase mb-2 tracking-widest text-brand-text/50">Phone</h4>
+                                <a href="tel:6304356080" className="flex items-center gap-2 text-[15px] md:text-lg font-medium leading-relaxed hover:text-brand-red transition-colors underline underline-offset-4 decoration-brand-text/20 hover:decoration-brand-red">
+                                    (630) 435-6080 <ArrowUpRight size={14} className="opacity-50" />
+                                </a>
                             </div>
                         </div>
                     </div>
 
-                    {/* Hours */}
-                    <div className="flex items-start gap-4 order-3 lg:order-none">
+                    {/* Column 2: Hours */}
+                    <div className="flex items-start gap-4 order-3 md:order-2">
                         <Clock className="shrink-0 mt-1" size={20} />
                         <div className="w-full">
                             <h4 className="text-[11px] font-black uppercase mb-2 tracking-widest text-brand-text/50">Hours</h4>
@@ -83,6 +63,22 @@ export default function Footer() {
                                     <span>Saturday</span>
                                     <span className="text-right">9 AM - 4 PM</span>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Column 3: Socials */}
+                    <div className="flex items-start gap-4 order-4 md:order-3">
+                        <div className="w-[20px] shrink-0"></div>
+                        <div>
+                            <h4 className="text-[11px] font-black uppercase mb-2 tracking-widest text-brand-text/50">Socials</h4>
+                            <div className="flex flex-col gap-3 text-[15px] md:text-lg font-medium leading-relaxed">
+                                <a href="https://www.instagram.com/bizy_cuts/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-brand-red transition-colors underline underline-offset-4 decoration-brand-text/20 hover:decoration-brand-red">
+                                    Instagram <ArrowUpRight size={14} className="opacity-50" />
+                                </a>
+                                <a href="https://www.facebook.com/BizyCuts" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-brand-red transition-colors underline underline-offset-4 decoration-brand-text/20 hover:decoration-brand-red">
+                                    Facebook <ArrowUpRight size={14} className="opacity-50" />
+                                </a>
                             </div>
                         </div>
                     </div>

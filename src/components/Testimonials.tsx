@@ -36,7 +36,7 @@ export default function Testimonials() {
                     {/* Left Side: Header */}
                     <div className="w-full md:w-1/3 flex flex-col">
                         <h2 className="text-[2.5rem] sm:text-6xl md:text-7xl lg:text-[6rem] leading-[0.9] font-medium tracking-tight mb-6">
-                            A Reputation Built<br />on Results.<br />
+                            A Reputation <br className="hidden lg:block" />Built on Results.
                         </h2>
                         <p className="text-[13px] md:text-sm font-medium text-brand-bg/70 leading-relaxed max-w-sm">
                             Proudly serving Downers Grove since 2007 -- here's what our community has to say.

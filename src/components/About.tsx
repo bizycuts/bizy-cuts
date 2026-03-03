@@ -21,7 +21,7 @@ export default function About() {
             </div>
 
             {/* Media & Sidebar Block */}
-            <div className="flex flex-col md:flex-row w-full relative mt-16 group">
+            <div className="flex flex-col-reverse md:flex-row w-[calc(100%+48px)] -mx-6 md:w-full md:mx-0 relative mt-16 group">
 
                 {/* Left Side: Big Full Width Image Wrapper */}
                 <div className="w-full md:w-[60%] aspect-[4/5] sm:aspect-square md:aspect-auto md:h-[80vh] bg-brand-gray relative overflow-hidden">
@@ -37,7 +37,7 @@ export default function About() {
                 </div>
 
                 {/* Right Side: Floating Text equivalent to right-side sidebar */}
-                <div className="w-full md:w-[40%] bg-brand-bg md:bg-transparent md:absolute right-0 top-0 bottom-0 flex flex-col justify-center px-6 py-12 md:pl-20 md:pr-16 md:bg-gradient-to-l md:from-brand-bg md:via-brand-bg md:to-transparent z-10 md:py-0 mt-8 md:mt-0">
+                <div className="w-full md:w-[40%] bg-brand-bg md:bg-transparent md:absolute right-0 top-0 bottom-0 flex flex-col justify-center px-6 py-12 md:pl-20 md:pr-16 md:bg-gradient-to-l md:from-brand-bg md:via-brand-bg md:to-transparent z-10 md:py-0 mb-8 md:mb-0">
                     <div className="max-w-sm ml-auto md:bg-brand-bg p-6 md:p-8">
                         <h3 className="text-sm font-bold tracking-tight mb-2 uppercase text-brand-text">CRAFTSMANSHIP WITHOUT COMPROMISE</h3>
                         <p className="text-sm md:text-[13px] text-brand-text/70 leading-relaxed font-medium mb-8">

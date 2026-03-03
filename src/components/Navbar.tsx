@@ -19,6 +19,7 @@ export default function Navbar() {
                 <Link href="#about" className="hover:text-brand-red transition-colors">About</Link>
                 <Link href="#services" className="hover:text-brand-red transition-colors">Services</Link>
                 <Link href="#team" className="hover:text-brand-red transition-colors">Team</Link>
+                <Link href="#testimonials" className="hover:text-brand-red transition-colors">Reviews</Link>
                 <Link href="#contact" className="hover:text-brand-red transition-colors">Contact</Link>
             </div>
 
@@ -40,6 +41,9 @@ export default function Navbar() {
                     </Link>
                     <Link href="#team" onClick={() => setIsOpen(false)} className="text-2xl font-medium tracking-tight hover:text-brand-red transition-colors border-b border-brand-text/5 pb-4">
                         Team
+                    </Link>
+                    <Link href="#testimonials" onClick={() => setIsOpen(false)} className="text-2xl font-medium tracking-tight hover:text-brand-red transition-colors border-b border-brand-text/5 pb-4">
+                        Reviews
                     </Link>
                     <Link href="#contact" onClick={() => setIsOpen(false)} className="text-2xl font-medium tracking-tight hover:text-brand-red transition-colors">
                         Contact
