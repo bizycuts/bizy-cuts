@@ -8,13 +8,23 @@ export default function Hero() {
     const scrollContainerRef = useRef<HTMLDivElement>(null);
 
     const scroll = (direction: 'left' | 'right') => {
-        if (scrollContainerRef.current && scrollContainerRef.current.firstElementChild) {
-            // Calculate exact width of one item + the gap-6 (24px)
-            const itemWidth = scrollContainerRef.current.firstElementChild.clientWidth;
+        const container = scrollContainerRef.current;
+        const firstChild = container?.firstElementChild;
+
+        if (container && firstChild) {
+            const itemWidth = firstChild.clientWidth;
             const scrollAmount = itemWidth + 24;
 
-            scrollContainerRef.current.scrollBy({
-                left: direction === 'left' ? -scrollAmount : scrollAmount,
+            // Calculate new position
+            let newScrollLeft = container.scrollLeft + (direction === 'left' ? -scrollAmount : scrollAmount);
+
+            // Clamp to boundaries to prevent Safari/mobile bounce or disappearing glitch
+            const maxScroll = container.scrollWidth - container.clientWidth;
+            if (newScrollLeft < 0) newScrollLeft = 0;
+            if (newScrollLeft > maxScroll) newScrollLeft = maxScroll;
+
+            container.scrollTo({
+                left: newScrollLeft,
                 behavior: 'smooth'
             });
         }
