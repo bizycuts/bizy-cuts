@@ -8,7 +8,7 @@ const servicesData = [
     {
         id: "womens",
         title: "Women's",
-        subtitle: "Services",
+        subtitle: "",
         items: [
             { name: "Short Hair", price: "$35+" },
             { name: "Long Hair", price: "$50+" },
@@ -18,7 +18,7 @@ const servicesData = [
     {
         id: "mens",
         title: "Men's",
-        subtitle: "Services",
+        subtitle: "",
         items: [
             { name: "Haircut", price: "$30+" },
             { name: "Haircut & Beard", price: "$45+" },
@@ -29,7 +29,7 @@ const servicesData = [
     {
         id: "childrens",
         title: "Children's",
-        subtitle: "Services",
+        subtitle: "",
         items: [
             { name: "Haircut (< 12 years)", price: "$25" },
         ]
@@ -53,6 +53,9 @@ export default function Services() {
 
                 {/* Left Side: Headings */}
                 <div className="flex flex-col w-full lg:w-[55%] justify-center">
+                    <h2 className="text-[2rem] sm:text-5xl md:text-[4.5rem] leading-[0.95] font-medium tracking-tight text-brand-text mb-12">
+                        Services.
+                    </h2>
                     {servicesData.map((service) => (
                         <div
                             key={service.id}
@@ -64,11 +67,11 @@ export default function Services() {
                                 }
                             }}
                         >
-                            <h2 className={`text-[2.2rem] sm:text-6xl md:text-7xl lg:text-[5rem] xl:text-[6.5rem] font-medium tracking-tight cursor-pointer transition-colors leading-[1.0] lg:leading-[0.95]
+                            <h3 className={`text-[1.8rem] sm:text-4xl md:text-5xl lg:text-[4rem] xl:text-[4.5rem] font-medium tracking-tight cursor-pointer transition-colors leading-[1.0]
                                 ${activeService === service.id ? "text-brand-red" : "text-brand-text lg:hover:text-brand-red"}
                             `}>
-                                {service.title} <span className="lg:block">{service.subtitle}</span>
-                            </h2>
+                                {service.title} {service.subtitle && <span className="lg:block">{service.subtitle}</span>}
+                            </h3>
 
                             {/* Mobile expansion (Active only on < lg) */}
                             <div className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out ${activeService === service.id ? "max-h-[500px] opacity-100 mt-8" : "max-h-0 opacity-0"}`}>
