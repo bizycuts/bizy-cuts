@@ -24,35 +24,34 @@ const servicesData: ServiceCategory[] = [
         subtitle: "",
         items: [
             {
-                name: "Short Hair",
-                price: "Starts at $35",
-                stylists: [
-                    { name: "Renata", price: "$55" },
-                    { name: "Vanesa", price: "$40" },
-                    { name: "Colette", price: "$35" },
-                    { name: "Donna", price: "$35" }
-                ]
-            },
-            {
-                name: "Long Hair",
-                price: "Starts at $50",
-                stylists: [
-                    { name: "Renata", price: "$75" },
-                    { name: "Vanesa", price: "$60" },
-                    { name: "Colette", price: "$50" },
-                    { name: "Donna", price: "$50" }
-                ]
-            },
-            {
-                name: "Hair Wash & Style",
-                price: "Starts at $30",
+                name: "Women's Haircut & Style",
+                price: "Starts at $45",
                 stylists: [
                     { name: "Renata", price: "$45" },
-                    { name: "Vanesa", price: "$35" },
-                    { name: "Colette", price: "$30" },
-                    { name: "Donna", price: "$30" }
+                    { name: "Colette", price: "$60" }
                 ]
             },
+            {
+                name: "Haircut & Shampoo",
+                price: "Starts at $35",
+                stylists: [
+                    { name: "Colette", price: "$35" }
+                ]
+            },
+            {
+                name: "Shampoo",
+                price: "Starts at $10",
+                stylists: [
+                    { name: "Renata", price: "$10" }
+                ]
+            },
+            {
+                name: "Deep Conditioning Treatment",
+                price: "Starts at $20",
+                stylists: [
+                    { name: "Renata", price: "$20" }
+                ]
+            }
         ]
     },
     {
@@ -61,23 +60,34 @@ const servicesData: ServiceCategory[] = [
         subtitle: "",
         items: [
             {
-                name: "Haircut",
+                name: "Men's Haircut",
                 price: "Starts at $30",
                 stylists: [
-                    { name: "Renata", price: "$45" },
-                    { name: "Vanesa", price: "$35" },
-                    { name: "Colette", price: "$30" },
-                    { name: "Donna", price: "$30" }
+                    { name: "Renata", price: "$30" },
+                    { name: "Vanesa", price: "$30" },
+                    { name: "Colette", price: "$30" }
                 ]
             },
             {
-                name: "Haircut & Beard",
+                name: "Haircut & Beard Shaping",
                 price: "Starts at $45",
                 stylists: [
-                    { name: "Renata", price: "$65" },
-                    { name: "Vanesa", price: "$55" },
-                    { name: "Colette", price: "$45" },
-                    { name: "Donna", price: "$45" }
+                    { name: "Renata", price: "$45" },
+                    { name: "Vanesa", price: "$60" }
+                ]
+            },
+            {
+                name: "Fade / Skin Fade",
+                price: "Starts at $40",
+                stylists: [
+                    { name: "Vanesa", price: "$40" }
+                ]
+            },
+            {
+                name: "Buzz Cut",
+                price: "Starts at $30",
+                stylists: [
+                    { name: "Vanesa", price: "$30" }
                 ]
             },
             { name: "Beard Grooming", price: "Starts at $15" },
@@ -89,7 +99,64 @@ const servicesData: ServiceCategory[] = [
         title: "Children's",
         subtitle: "",
         items: [
-            { name: "Haircut (< 12 years)", price: "$25" },
+            {
+                name: "Children's Haircut (< 12)",
+                price: "Starts at $25",
+                stylists: [
+                    { name: "Renata", price: "$25" },
+                    { name: "Vanesa", price: "$30" }
+                ]
+            }
+        ]
+    },
+    {
+        id: "color",
+        title: "Color &",
+        subtitle: "Texture",
+        items: [
+            {
+                name: "Root Touch-Up",
+                price: "Starts at $55",
+                stylists: [
+                    { name: "Renata", price: "$55" }
+                ]
+            },
+            {
+                name: "Full Hair Color",
+                price: "Starts at $65",
+                stylists: [
+                    { name: "Renata", price: "$65" }
+                ]
+            },
+            {
+                name: "Highlights",
+                price: "Starts at $100",
+                stylists: [
+                    { name: "Renata", price: "$100" },
+                    { name: "Colette", price: "$100" }
+                ]
+            },
+            {
+                name: "Toner",
+                price: "Starts at $30",
+                stylists: [
+                    { name: "Renata", price: "$30" }
+                ]
+            },
+            {
+                name: "Color + Haircut + Style",
+                price: "Starts at $120",
+                stylists: [
+                    { name: "Colette", price: "$120" }
+                ]
+            },
+            {
+                name: "Perm + Haircut + Style",
+                price: "Starts at $120",
+                stylists: [
+                    { name: "Colette", price: "$120" }
+                ]
+            }
         ]
     }
 ];
@@ -99,6 +166,7 @@ export default function Services() {
     const [selectedPricing, setSelectedPricing] = useState<string>("Starts at");
 
     const toggleService = (id: string) => {
+        if (typeof window !== 'undefined' && window.innerWidth >= 1024) return;
         if (activeService === id) {
             setActiveService(null);
         } else {
@@ -106,7 +174,7 @@ export default function Services() {
         }
     };
 
-    const pricingOptions = ["Starts at", "Renata", "Vanesa", "Colette", "Donna"];
+    const pricingOptions = ["Starts at", "Renata", "Vanesa", "Colette"];
 
     const getPriceToDisplay = (item: ServiceItem) => {
         if (selectedPricing === "Starts at" || !item.stylists) {
@@ -115,7 +183,7 @@ export default function Services() {
         }
 
         const stylistPricing = item.stylists.find(s => s.name === selectedPricing);
-        return stylistPricing ? stylistPricing.price : item.price.replace("Starts at ", "");
+        return stylistPricing ? (stylistPricing.price.startsWith("Starts at ") ? stylistPricing.price.replace("Starts at ", "") : stylistPricing.price) : "-";
     };
 
     const renderPricingToggle = () => (
@@ -160,14 +228,15 @@ export default function Services() {
                         <div
                             key={service.id}
                             className="border-b border-brand-text/10 lg:border-none pb-6 lg:pb-0 mb-6 lg:mb-4 group relative"
-                            onClick={() => toggleService(service.id)}
-                            onMouseEnter={() => {
-                                if (window.innerWidth >= 1024) {
-                                    setActiveService(service.id);
-                                }
-                            }}
                         >
-                            <h3 className={`text-4xl sm:text-5xl lg:text-6xl xl:text-[5rem] font-medium tracking-tight cursor-pointer transition-colors leading-[1.0]
+                            <h3 
+                                onClick={() => toggleService(service.id)}
+                                onMouseEnter={() => {
+                                    if (window.innerWidth >= 1024) {
+                                        setActiveService(service.id);
+                                    }
+                                }}
+                                className={`text-4xl sm:text-5xl lg:text-6xl xl:text-[5rem] font-medium tracking-tight cursor-pointer transition-colors leading-[1.0] inline-block w-max
                                 ${activeService === service.id ? "text-brand-red" : "text-brand-text lg:hover:text-brand-red"}
                             `}>
                                 {service.title} {service.subtitle && <span className="lg:block">{service.subtitle}</span>}
@@ -179,7 +248,7 @@ export default function Services() {
                                 <ul className="flex flex-col gap-5 text-[15px] font-medium relative">
                                     {service.items.map((item, idx) => (
                                         <li key={idx} className="flex justify-between items-end border-b border-brand-text/5 pb-3">
-                                            <span className="text-brand-text/90">{item.name}</span>
+                                            <span className="text-brand-text/90 hover:text-brand-red transition-colors w-max relative">{item.name}</span>
                                             <span className="text-brand-text font-bold tracking-wider relative">
                                                 <span className={`transition-opacity duration-300`}>
                                                     {getPriceToDisplay(item)}
@@ -222,8 +291,8 @@ export default function Services() {
                                 <h3 className="text-[10px] font-bold tracking-[0.2em] mb-12 uppercase text-brand-text/40">{service.title} {service.subtitle} MENU</h3>
                                 <ul className="flex flex-col gap-6 font-medium text-[15px]">
                                     {service.items.map((item, idx) => (
-                                        <li key={idx} className="flex justify-between items-end border-b border-brand-text/10 pb-4 group/item">
-                                            <span className="text-brand-text/80 group-hover/item:text-brand-red transition-colors">{item.name}</span>
+                                        <li key={idx} className="flex justify-between items-end border-b border-brand-text/10 pb-4">
+                                            <span className="text-brand-text/80 hover:text-brand-red transition-colors w-max relative cursor-pointer">{item.name}</span>
                                             <span className="text-brand-text font-bold tracking-widest relative overflow-hidden">
                                                 <span className={`block transition-all duration-300`}>
                                                     {getPriceToDisplay(item)}
@@ -252,14 +321,7 @@ export default function Services() {
                         </div>
                     ))}
 
-                    {/* Empty state when nothing is active */}
-                    <div className={`absolute inset-0 flex flex-col justify-center transition-opacity duration-500 max-w-lg mb-12 w-full ${activeService === null ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
-                        <div className="w-full h-[70%] border border-brand-text/10 flex items-center justify-center">
-                            <p className="text-brand-text/30 font-medium tracking-[0.2em] uppercase text-[10px] text-center px-8 leading-loose">
-                                Hover over a category <br /> to view pricing details
-                            </p>
-                        </div>
-                    </div>
+
                 </div>
 
             </div>

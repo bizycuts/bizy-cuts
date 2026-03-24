@@ -30,7 +30,7 @@ export default function Testimonials() {
     };
 
     return (
-        <section className="py-24 md:py-32 px-6 md:px-12 lg:px-24 bg-brand-text text-brand-bg relative w-full overflow-hidden">
+        <section id="testimonials" className="py-24 md:py-32 px-6 md:px-12 lg:px-24 bg-brand-text text-brand-bg relative w-full overflow-hidden">
             <div className="max-w-7xl mx-auto flex flex-col">
                 <div className="flex flex-col md:flex-row gap-16 md:gap-24 items-center w-full">
                     {/* Left Side: Header */}

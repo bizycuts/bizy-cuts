@@ -20,7 +20,7 @@ export default function About() {
 
                         {/* The image component with unoptimized to bypass Next.js stubborn caching */}
                         <div className="absolute inset-0 transition-all duration-700 cursor-pointer overflow-hidden group">
-                            <Image src="/about.png" unoptimized={true} fill alt="About Studio" className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                            <Image src="/salon.jpg" unoptimized={true} fill alt="About Studio" className="object-cover group-hover:scale-105 transition-transform duration-700" />
                         </div>
                     </div>
 

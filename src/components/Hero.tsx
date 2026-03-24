@@ -37,6 +37,7 @@ export default function Hero() {
         { title: "Haircut 3", fallback: "HAIRCUT 03", image: "/haircut3.jpg" },
         { title: "Haircut 5", fallback: "HAIRCUT 05", image: "/haircut5.jpg" },
         { title: "Haircut 6", fallback: "HAIRCUT 06", image: "/haircut6.jpg" },
+        { title: "Haircut 8", fallback: "HAIRCUT 08", image: "/haircut8.jpg" },
         { title: "Haircut 7", fallback: "HAIRCUT 07", image: "/haircut7.jpg" }
     ];
 
