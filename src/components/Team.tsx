@@ -42,27 +42,27 @@ export default function Team() {
     const teamMembers = [
         {
             name: "Renata",
-            role: "Founder | Stylist",
+            role: "Founder | Women's & Men's Stylist",
             imageFallback: "STYLIST 01",
-            phone: "+1 (555) 123-4567"
+            phone: "(630) 435-6080"
         },
         {
             name: "Vanesa",
-            role: "Stylist",
+            role: "Men's Stylist",
             imageFallback: "STYLIST 02",
-            phone: "+1 (555) 234-5678"
+            phone: "(815) 549-2844"
         },
         {
             name: "Colette",
-            role: "Stylist",
+            role: "Women's & Men's Stylist",
             imageFallback: "STYLIST 03",
-            phone: "+1 (555) 345-6789"
+            phone: "(630) 391-1227"
         },
         {
             name: "Donna",
-            role: "Stylist",
+            role: "Men's Stylist",
             imageFallback: "STYLIST 04",
-            phone: "+1 (555) 456-7890"
+            phone: "(630) 915-3778"
         }
     ];
 
@@ -112,7 +112,7 @@ export default function Team() {
                                         className="flex items-center text-brand-text transition-all duration-500 md:opacity-0 md:-translate-x-2 md:group-hover:opacity-100 md:group-hover:translate-x-0 group/phone cursor-pointer"
                                         title={activePhoneIndex === idx ? member.phone : `Call ${member.name}`}
                                     >
-                                        <div className={`flex items-center bg-brand-text/5 group-hover/phone:bg-brand-red/10 group-hover/phone:text-brand-red rounded-full p-[8px] transition-all duration-500 overflow-hidden w-[30px] ${activePhoneIndex === idx ? 'md:w-[155px]' : 'md:w-[30px]'}`}>
+                                        <div className={`flex items-center bg-brand-text/5 group-hover/phone:bg-brand-red/10 group-hover/phone:text-brand-red rounded-full p-[8px] transition-all duration-500 overflow-hidden w-[30px] ${activePhoneIndex === idx ? 'md:w-[135px]' : 'md:w-[30px]'}`}>
                                             <Phone size={14} className="shrink-0" />
                                             <span className={`text-[10px] font-bold tracking-[0.1em] pl-3 whitespace-nowrap transition-opacity duration-500 delay-100 hidden md:block ${activePhoneIndex === idx ? 'opacity-100' : 'opacity-0'}`}>
                                                 {member.phone}

@@ -28,7 +28,7 @@ export default function About() {
                     <div className="w-full md:col-span-7 lg:col-span-8 flex flex-col justify-center">
                         <div className="max-w-xl">
                             <p className="text-[13px] md:text-sm font-medium text-brand-text leading-relaxed mb-8">
-                                Founded in 2007 by Renata, Bizy Cuts has become a trusted name in Downers Grove. As a proudly Lithuanian-owned salon, we are committed to delivering expert craftsmanship, refined technique, and a welcoming experience for every client.
+                                Founded in 2006 by Renata, Bizy Cuts has become a trusted name in Downers Grove. As a proudly Lithuanian-owned salon, we are committed to delivering expert craftsmanship, refined technique, and a welcoming experience for every client.
                             </p>
                             <p className="text-[13px] md:text-sm font-medium text-brand-text/70 leading-relaxed mb-12">
                                 Our philosophy is simple: combine skill with sincerity. Whether it’s a fresh cut or a complete style refresh, we approach every appointment with the same focus — precision, consistency, and care.

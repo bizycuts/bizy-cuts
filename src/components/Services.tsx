@@ -57,11 +57,7 @@ const servicesData: ServiceCategory[] = [
                 { name: "Perm + Haircut + Style", price: "Starts at $120" },
                 { name: "Highlights", price: "Starts at $100" }
             ],
-            "Donna": [
-                { name: "Short Hair", price: "Starts at $35" },
-                { name: "Long Hair", price: "Starts at $50" },
-                { name: "Hair Wash & Style", price: "Starts at $30" }
-            ]
+            "Donna": []
         }
     },
     {
@@ -125,6 +121,16 @@ const servicesData: ServiceCategory[] = [
     }
 ];
 
+const validStylistsForService = (serviceId: string) => {
+    if (serviceId === "womens") {
+        return ["All", "Renata", "Colette"];
+    }
+    if (serviceId === "childrens") {
+        return ["All", "Renata", "Vanesa", "Colette", "Donna"];
+    }
+    return ["All", "Renata", "Vanesa", "Colette", "Donna"];
+};
+
 export default function Services() {
     const [activeService, setActiveService] = useState<string | null>("womens");
     const [selectedPricing, setSelectedPricing] = useState<string>("All");
@@ -135,10 +141,9 @@ export default function Services() {
             setActiveService(null);
         } else {
             setActiveService(id);
+            setSelectedPricing(prev => validStylistsForService(id).includes(prev) ? prev : "All");
         }
     };
-
-    const pricingOptions = ["All", "Renata", "Vanesa", "Colette", "Donna"];
 
     const getActiveItems = (service: ServiceCategory) => {
         return service.pricing[selectedPricing] || [];
@@ -149,11 +154,11 @@ export default function Services() {
         return item.price.startsWith("Starts at ") ? item.price.replace("Starts at ", "") : item.price;
     };
 
-    const renderPricingToggle = () => (
+    const renderPricingToggle = (service: ServiceCategory) => (
         <div className="mb-8 w-full">
             <h4 className="text-[10px] uppercase tracking-[0.2em] font-bold text-brand-text/50 mb-4 cursor-pointer">{selectedPricing === "All" ? "Select a stylist for pricing" : "Pricing may vary by stylist"}</h4>
             <div className="flex flex-nowrap overflow-x-auto gap-1 sm:gap-2 w-full pb-2 -mb-2 hide-scrollbar shrink-0">
-                {pricingOptions.map((option) => (
+                {validStylistsForService(service.id).map((option) => (
                     <button
                         key={option}
                         onClick={(e) => {
@@ -197,6 +202,7 @@ export default function Services() {
                                 onMouseEnter={() => {
                                     if (window.innerWidth >= 1024) {
                                         setActiveService(service.id);
+                                        setSelectedPricing(prev => validStylistsForService(service.id).includes(prev) ? prev : "All");
                                     }
                                 }}
                                 className={`text-4xl sm:text-5xl lg:text-6xl xl:text-[5rem] font-medium tracking-tight cursor-pointer transition-colors leading-[1.0] inline-block w-max
@@ -207,7 +213,7 @@ export default function Services() {
 
                             {/* Mobile expansion (Active only on < lg) */}
                             <div className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out ${activeService === service.id ? "max-h-[800px] opacity-100 mt-8" : "max-h-0 opacity-0"}`}>
-                                {renderPricingToggle()}
+                                {renderPricingToggle(service)}
                                 
                                 {getActiveItems(service).length > 0 ? (
                                     <ul className="flex flex-col gap-5 text-[15px] font-medium relative">
@@ -258,7 +264,7 @@ export default function Services() {
                             `}
                         >
                             <div className="bg-[#EAE8E2] p-12 w-full max-w-lg mb-12 relative">
-                                {renderPricingToggle()}
+                                {renderPricingToggle(service)}
                                 <h3 className="text-[10px] font-bold tracking-[0.2em] mb-12 uppercase text-brand-text/40">{service.title} {service.subtitle} MENU</h3>
                                 
                                 {getActiveItems(service).length > 0 ? (
