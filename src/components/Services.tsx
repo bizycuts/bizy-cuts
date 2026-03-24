@@ -6,15 +6,18 @@ const MAIN_PHONE_NUMBER = "6304356080";
 
 type ServiceItem = {
     name: string;
-    price: string;
-    stylists?: { name: string; price: string }[];
+    price?: string;
+};
+
+type PricingMap = {
+    [stylist: string]: ServiceItem[];
 };
 
 type ServiceCategory = {
     id: string;
     title: string;
     subtitle: string;
-    items: ServiceItem[];
+    pricing: PricingMap;
 };
 
 const servicesData: ServiceCategory[] = [
@@ -22,148 +25,109 @@ const servicesData: ServiceCategory[] = [
         id: "womens",
         title: "Women's",
         subtitle: "",
-        items: [
-            {
-                name: "Women's Haircut & Style",
-                price: "Starts at $45",
-                stylists: [
-                    { name: "Renata", price: "$45" },
-                    { name: "Colette", price: "$60" }
-                ]
-            },
-            {
-                name: "Haircut & Shampoo",
-                price: "Starts at $35",
-                stylists: [
-                    { name: "Colette", price: "$35" }
-                ]
-            },
-            {
-                name: "Shampoo",
-                price: "Starts at $10",
-                stylists: [
-                    { name: "Renata", price: "$10" }
-                ]
-            },
-            {
-                name: "Deep Conditioning Treatment",
-                price: "Starts at $20",
-                stylists: [
-                    { name: "Renata", price: "$20" }
-                ]
-            }
-        ]
+        pricing: {
+            "All": [
+                { name: "Hair Wash & Style" },
+                { name: "Women's Haircut and style" },
+                { name: "Haircut + Shampoo" },
+                { name: "Haircut + Style" },
+                { name: "Color + Haircut + Style" },
+                { name: "Perm + Haircut + Style" },
+                { name: "Shampoo" },
+                { name: "Deep Conditioning Treatment" },
+                { name: "Root Touch-Up" },
+                { name: "Full Hair Color" },
+                { name: "Highlights" },
+                { name: "Toner" }
+            ],
+            "Renata": [
+                { name: "Women's Haircut and style", price: "Starts at $45" },
+                { name: "Shampoo", price: "Starts at $10" },
+                { name: "Deep Conditioning Treatment", price: "Starts at $20" },
+                { name: "Root Touch-Up", price: "Starts at $55" },
+                { name: "Full Hair Color", price: "Starts at $65" },
+                { name: "Highlights", price: "Starts at $100" },
+                { name: "Toner", price: "Starts at $30" }
+            ],
+            "Vanesa": [],
+            "Colette": [
+                { name: "Haircut + Shampoo", price: "Starts at $35" },
+                { name: "Haircut + Style", price: "Starts at $60" },
+                { name: "Color + Haircut + Style", price: "Starts at $120" },
+                { name: "Perm + Haircut + Style", price: "Starts at $120" },
+                { name: "Highlights", price: "Starts at $100" }
+            ],
+            "Donna": [
+                { name: "Short Hair", price: "Starts at $35" },
+                { name: "Long Hair", price: "Starts at $50" },
+                { name: "Hair Wash & Style", price: "Starts at $30" }
+            ]
+        }
     },
     {
         id: "mens",
         title: "Men's",
         subtitle: "",
-        items: [
-            {
-                name: "Men's Haircut",
-                price: "Starts at $30",
-                stylists: [
-                    { name: "Renata", price: "$30" },
-                    { name: "Vanesa", price: "$30" },
-                    { name: "Colette", price: "$30" }
-                ]
-            },
-            {
-                name: "Haircut & Beard Shaping",
-                price: "Starts at $45",
-                stylists: [
-                    { name: "Renata", price: "$45" },
-                    { name: "Vanesa", price: "$60" }
-                ]
-            },
-            {
-                name: "Fade / Skin Fade",
-                price: "Starts at $40",
-                stylists: [
-                    { name: "Vanesa", price: "$40" }
-                ]
-            },
-            {
-                name: "Buzz Cut",
-                price: "Starts at $30",
-                stylists: [
-                    { name: "Vanesa", price: "$30" }
-                ]
-            },
-            { name: "Beard Grooming", price: "Starts at $15" },
-            { name: "Hair Wash and Style", price: "Starts at $15" },
-        ]
+        pricing: {
+            "All": [
+                { name: "Men's Haircut" },
+                { name: "Men's / Boys Haircut" },
+                { name: "Haircut & Beard" },
+                { name: "Men's Haircut + Beard Shaping" },
+                { name: "Haircut + Beard Trim" },
+                { name: "Fade / Skin Fade" },
+                { name: "Buzz Cut" },
+                { name: "Beard Grooming" },
+                { name: "Hair Wash and Style" }
+            ],
+            "Renata": [
+                { name: "Men's Haircut", price: "Starts at $30" },
+                { name: "Men's Haircut + Beard Shaping", price: "Starts at $45" }
+            ],
+            "Vanesa": [
+                { name: "Men's / Boys Haircut", price: "$30" },
+                { name: "Fade / Skin Fade", price: "$40" },
+                { name: "Buzz Cut", price: "$30" },
+                { name: "Haircut + Beard Trim", price: "$60" }
+            ],
+            "Colette": [
+                { name: "Men's Haircut", price: "Starts at $30" }
+            ],
+            "Donna": [
+                { name: "Haircut", price: "Starts at $30" },
+                { name: "Haircut & Beard", price: "Starts at $45" },
+                { name: "Beard Grooming", price: "Starts at $15" },
+                { name: "Hair Wash and Style", price: "Starts at $15" }
+            ]
+        }
     },
     {
         id: "childrens",
         title: "Children's",
         subtitle: "",
-        items: [
-            {
-                name: "Children's Haircut (< 12)",
-                price: "Starts at $25",
-                stylists: [
-                    { name: "Renata", price: "$25" },
-                    { name: "Vanesa", price: "$30" }
-                ]
-            }
-        ]
-    },
-    {
-        id: "color",
-        title: "Color &",
-        subtitle: "Texture",
-        items: [
-            {
-                name: "Root Touch-Up",
-                price: "Starts at $55",
-                stylists: [
-                    { name: "Renata", price: "$55" }
-                ]
-            },
-            {
-                name: "Full Hair Color",
-                price: "Starts at $65",
-                stylists: [
-                    { name: "Renata", price: "$65" }
-                ]
-            },
-            {
-                name: "Highlights",
-                price: "Starts at $100",
-                stylists: [
-                    { name: "Renata", price: "$100" },
-                    { name: "Colette", price: "$100" }
-                ]
-            },
-            {
-                name: "Toner",
-                price: "Starts at $30",
-                stylists: [
-                    { name: "Renata", price: "$30" }
-                ]
-            },
-            {
-                name: "Color + Haircut + Style",
-                price: "Starts at $120",
-                stylists: [
-                    { name: "Colette", price: "$120" }
-                ]
-            },
-            {
-                name: "Perm + Haircut + Style",
-                price: "Starts at $120",
-                stylists: [
-                    { name: "Colette", price: "$120" }
-                ]
-            }
-        ]
+        pricing: {
+            "All": [
+                { name: "Haircut (< 12 years)" },
+                { name: "Children's Haircut (under 12)" },
+                { name: "Men's / Boys Haircut" }
+            ],
+            "Renata": [
+                { name: "Children's Haircut (under 12)", price: "Starts at $25" }
+            ],
+            "Vanesa": [
+                { name: "Men's / Boys Haircut", price: "$30" }
+            ],
+            "Colette": [],
+            "Donna": [
+                { name: "Haircut (< 12 years)", price: "Starts at $25" }
+            ]
+        }
     }
 ];
 
 export default function Services() {
     const [activeService, setActiveService] = useState<string | null>("womens");
-    const [selectedPricing, setSelectedPricing] = useState<string>("Starts at");
+    const [selectedPricing, setSelectedPricing] = useState<string>("All");
 
     const toggleService = (id: string) => {
         if (typeof window !== 'undefined' && window.innerWidth >= 1024) return;
@@ -174,21 +138,20 @@ export default function Services() {
         }
     };
 
-    const pricingOptions = ["Starts at", "Renata", "Vanesa", "Colette"];
+    const pricingOptions = ["All", "Renata", "Vanesa", "Colette", "Donna"];
+
+    const getActiveItems = (service: ServiceCategory) => {
+        return service.pricing[selectedPricing] || [];
+    };
 
     const getPriceToDisplay = (item: ServiceItem) => {
-        if (selectedPricing === "Starts at" || !item.stylists) {
-            // Strip "Starts at " if it exists, or just return the price
-            return item.price.replace("Starts at ", "");
-        }
-
-        const stylistPricing = item.stylists.find(s => s.name === selectedPricing);
-        return stylistPricing ? (stylistPricing.price.startsWith("Starts at ") ? stylistPricing.price.replace("Starts at ", "") : stylistPricing.price) : "-";
+        if (!item.price) return "";
+        return item.price.startsWith("Starts at ") ? item.price.replace("Starts at ", "") : item.price;
     };
 
     const renderPricingToggle = () => (
         <div className="mb-8 w-full">
-            <h4 className="text-[10px] uppercase tracking-[0.2em] font-bold text-brand-text/50 mb-4">Pricing may vary by stylist</h4>
+            <h4 className="text-[10px] uppercase tracking-[0.2em] font-bold text-brand-text/50 mb-4 cursor-pointer">{selectedPricing === "All" ? "Select a stylist for pricing" : "Pricing may vary by stylist"}</h4>
             <div className="flex flex-nowrap overflow-x-auto gap-1 sm:gap-2 w-full pb-2 -mb-2 hide-scrollbar shrink-0">
                 {pricingOptions.map((option) => (
                     <button
@@ -245,18 +208,26 @@ export default function Services() {
                             {/* Mobile expansion (Active only on < lg) */}
                             <div className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out ${activeService === service.id ? "max-h-[800px] opacity-100 mt-8" : "max-h-0 opacity-0"}`}>
                                 {renderPricingToggle()}
-                                <ul className="flex flex-col gap-5 text-[15px] font-medium relative">
-                                    {service.items.map((item, idx) => (
-                                        <li key={idx} className="flex justify-between items-end border-b border-brand-text/5 pb-3">
-                                            <span className="text-brand-text/90 hover:text-brand-red transition-colors w-max relative">{item.name}</span>
-                                            <span className="text-brand-text font-bold tracking-wider relative">
-                                                <span className={`transition-opacity duration-300`}>
-                                                    {getPriceToDisplay(item)}
-                                                </span>
-                                            </span>
-                                        </li>
-                                    ))}
-                                </ul>
+                                
+                                {getActiveItems(service).length > 0 ? (
+                                    <ul className="flex flex-col gap-5 text-[15px] font-medium relative">
+                                        {getActiveItems(service).map((item, idx) => (
+                                            <li key={idx} className="flex justify-between items-end border-b border-brand-text/5 pb-3">
+                                                <span className="text-brand-text/90 hover:text-brand-red transition-colors w-max relative">{item.name}</span>
+                                                {selectedPricing !== "All" && (
+                                                    <span className="text-brand-text font-bold tracking-wider relative">
+                                                        <span className={`transition-opacity duration-300`}>
+                                                            {getPriceToDisplay(item)}
+                                                        </span>
+                                                    </span>
+                                                )}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                ) : (
+                                    <p className="text-[13px] text-brand-text/50 font-medium italic mt-2 mb-6">Pricing for these services varies. Please call to inquire.</p>
+                                )}
+
                                 <div className="mt-8 mb-4">
                                     <button
                                         onClick={(e) => {
@@ -289,18 +260,25 @@ export default function Services() {
                             <div className="bg-[#EAE8E2] p-12 w-full max-w-lg mb-12 relative">
                                 {renderPricingToggle()}
                                 <h3 className="text-[10px] font-bold tracking-[0.2em] mb-12 uppercase text-brand-text/40">{service.title} {service.subtitle} MENU</h3>
-                                <ul className="flex flex-col gap-6 font-medium text-[15px]">
-                                    {service.items.map((item, idx) => (
-                                        <li key={idx} className="flex justify-between items-end border-b border-brand-text/10 pb-4">
-                                            <span className="text-brand-text/80 hover:text-brand-red transition-colors w-max relative cursor-pointer">{item.name}</span>
-                                            <span className="text-brand-text font-bold tracking-widest relative overflow-hidden">
-                                                <span className={`block transition-all duration-300`}>
-                                                    {getPriceToDisplay(item)}
-                                                </span>
-                                            </span>
-                                        </li>
-                                    ))}
-                                </ul>
+                                
+                                {getActiveItems(service).length > 0 ? (
+                                    <ul className="flex flex-col gap-6 font-medium text-[15px]">
+                                        {getActiveItems(service).map((item, idx) => (
+                                            <li key={idx} className="flex justify-between items-end border-b border-brand-text/10 pb-4">
+                                                <span className="text-brand-text/80 hover:text-brand-red transition-colors w-max relative cursor-pointer">{item.name}</span>
+                                                {selectedPricing !== "All" && (
+                                                    <span className="text-brand-text font-bold tracking-widest relative overflow-hidden">
+                                                        <span className={`block transition-all duration-300`}>
+                                                            {getPriceToDisplay(item)}
+                                                        </span>
+                                                    </span>
+                                                )}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                ) : (
+                                    <p className="text-[14px] text-brand-text/40 font-medium italic mt-2 mb-10 w-full text-center">Contact us directly for specific pricing.</p>
+                                )}
 
                                 <div className="mt-12">
                                     <button
@@ -320,7 +298,6 @@ export default function Services() {
                             </div>
                         </div>
                     ))}
-
 
                 </div>
 
