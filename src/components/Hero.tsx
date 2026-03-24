@@ -31,8 +31,8 @@ export default function Hero() {
     };
 
     const galleryItems = [
-        { title: "Haircut 1", fallback: "HAIRCUT 01", image: "/haircut1.jpg" },
         { title: "Haircut 2", fallback: "HAIRCUT 02", image: "/haircut2.jpg" },
+        { title: "Haircut 1", fallback: "HAIRCUT 01", image: "/haircut1.jpg" },
         { title: "Haircut 4", fallback: "HAIRCUT 04", image: "/haircut4.jpg" },
         { title: "Haircut 3", fallback: "HAIRCUT 03", image: "/haircut3.jpg" },
         { title: "Haircut 5", fallback: "HAIRCUT 05", image: "/haircut5.jpg" },

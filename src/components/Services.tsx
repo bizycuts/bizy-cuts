@@ -132,7 +132,7 @@ const validStylistsForService = (serviceId: string) => {
 };
 
 export default function Services() {
-    const [activeService, setActiveService] = useState<string | null>("womens");
+    const [activeService, setActiveService] = useState<string | null>(null);
     const [selectedPricing, setSelectedPricing] = useState<string>("All");
 
     const toggleService = (id: string) => {
@@ -179,21 +179,23 @@ export default function Services() {
 
     return (
         <section id="services" className="py-24 md:py-32 px-6 md:px-12 lg:px-24 bg-brand-bg relative flex flex-col justify-center min-h-[80vh]">
-            <div className="w-full max-w-7xl mx-auto mb-16 lg:mb-24">
-                <h2 className="text-[3.5rem] sm:text-6xl md:text-7xl lg:text-[7rem] leading-[0.9] font-medium tracking-tight text-brand-text mb-6">
-                    Services
-                </h2>
-                <p className="text-[14px] md:text-base font-medium text-brand-text/70 leading-relaxed max-w-xl">
-                    Expert cuts, styling, and grooming tailored to your unique look.
-                </p>
-            </div>
-
             <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-24">
 
-                {/* Left Side: Headings */}
-                <div className="flex flex-col w-full lg:w-[45%] justify-start mt-0 lg:-mt-10">
-                    {servicesData.map((service) => (
-                        <div
+                {/* Left Side: Title and Headings */}
+                <div className="flex flex-col w-full lg:w-[45%] justify-start">
+                    
+                    <div className="mb-16 lg:mb-24">
+                        <h2 className="text-[3.5rem] sm:text-6xl md:text-7xl lg:text-[7rem] leading-[0.9] font-medium tracking-tight text-brand-text mb-6">
+                            Services
+                        </h2>
+                        <p className="text-[14px] md:text-base font-medium text-brand-text/70 leading-relaxed max-w-xl">
+                            Expert cuts, styling, and grooming tailored to your unique look.
+                        </p>
+                    </div>
+
+                    <div className="flex flex-col w-full justify-start mt-0">
+                        {servicesData.map((service) => (
+                            <div
                             key={service.id}
                             className="border-b border-brand-text/10 lg:border-none pb-6 lg:pb-0 mb-6 lg:mb-4 group relative"
                         >
@@ -205,10 +207,13 @@ export default function Services() {
                                         setSelectedPricing(prev => validStylistsForService(service.id).includes(prev) ? prev : "All");
                                     }
                                 }}
-                                className={`text-4xl sm:text-5xl lg:text-6xl xl:text-[5rem] font-medium tracking-tight cursor-pointer transition-colors leading-[1.0] inline-block w-max
-                                ${activeService === service.id ? "text-brand-red" : "text-brand-text lg:hover:text-brand-red"}
+                                className={`text-4xl sm:text-5xl lg:text-6xl xl:text-[5rem] font-medium tracking-tight cursor-pointer transition-all duration-500 ease-out leading-[1.0] inline-block w-max relative pr-12 lg:pr-16
+                                ${activeService === service.id ? "text-brand-red translate-x-2 md:translate-x-8 opacity-100" : "text-brand-text/70 hover:text-brand-red hover:opacity-100 hover:translate-x-2 lg:hover:translate-x-6"}
                             `}>
                                 {service.title} {service.subtitle && <span className="lg:block">{service.subtitle}</span>}
+                                <span className={`absolute right-0 top-1/2 -translate-y-[45%] text-2xl lg:text-4xl transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${activeService === service.id ? "opacity-100 translate-x-2 md:translate-x-4 text-brand-red" : "opacity-30 translate-x-0 group-hover:opacity-100"}`}>
+                                    →
+                                </span>
                             </h3>
 
                             {/* Mobile expansion (Active only on < lg) */}
@@ -250,16 +255,17 @@ export default function Services() {
                                     </button>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                            </div>
+                        ))}
+                    </div>
                 </div>
 
                 {/* Right Side: Desktop options display (Hidden on mobile) */}
-                <div className="hidden lg:flex w-[45%] flex-col justify-center relative min-h-[500px]">
+                <div className="hidden lg:flex w-[45%] flex-col justify-start relative min-h-[600px] mt-2 lg:mt-3">
                     {servicesData.map((service) => (
                         <div
                             key={service.id}
-                            className={`absolute inset-0 flex flex-col justify-center transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]
+                            className={`absolute inset-x-0 top-0 flex flex-col justify-start transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]
                                 ${activeService === service.id ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-12 pointer-events-none"}
                             `}
                         >
